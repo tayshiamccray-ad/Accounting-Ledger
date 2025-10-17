@@ -28,7 +28,7 @@ public class AccountingLedger {
             System.out.println("D) Add Deposit");
             System.out.println("P) Make Payment (Debit)");
             System.out.println("L) Ledger");
-            System.out.println("X) Exit");
+            System.out.println("X) Exiting: Goodbye!");
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine().trim().toUpperCase();
 
@@ -43,7 +43,7 @@ public class AccountingLedger {
                     ledgerMenu();
                     break;
                 case "X":
-                    System.out.println("Exiting application... Goodbye!");
+                    System.out.println("Exiting... Goodbye!");
                     running = false;
                     break;
                 default:
