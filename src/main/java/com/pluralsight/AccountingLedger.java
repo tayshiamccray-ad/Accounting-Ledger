@@ -90,7 +90,7 @@ public class AccountingLedger {
         }
     }
     // ============ Reports Menu ============
-    private static void reportMenu(List<Transaction> transactions) {
+    private static <Transaction> void reportMenu(List<Transaction> transactions) {
         boolean back = false;
         while (!back) {
             System.out.println("\nReports Menu:");
