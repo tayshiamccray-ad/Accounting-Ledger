@@ -1,10 +1,8 @@
 package com.pluralsight;
-import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,6 +12,9 @@ public class AccountingLedger {
     private static final Scanner scanner = new Scanner(System.in);
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+    public AccountingLedger() throws IOException {
+    }
 
     public static void main(String[] args) {
 
@@ -104,36 +105,11 @@ public class AccountingLedger {
 
         }
     }
+    BufferedWriter writer = new BufferedWriter
+            (new FileWriter("C:\\Users\\Student\\pluralsight\\capstone-1\\untitled\\src\\main\\resources"));
+
+
+
 
 
     }
-
-
-    // ============ Transaction Class ============
-    class Transaction {
-        private LocalDate date;
-        private LocalTime time;
-        private String description;
-        private String vendor;
-        private double amount;
-
-        public Transaction(LocalDate date, LocalTime time, String description, String vendor, double amount) {
-            this.date = date;
-            this.time = time;
-            this.description = description;
-            this.vendor = vendor;
-            this.amount = amount;
-        }
-
-        public LocalDate getDate() { return date; }
-        public LocalTime getTime() { return time; }
-        public String getDescription() { return description; }
-        public String getVendor() { return vendor; }
-        public double getAmount() { return amount; }
-    }
-
-
-
-
-
-
