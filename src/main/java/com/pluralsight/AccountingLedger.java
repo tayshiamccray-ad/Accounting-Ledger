@@ -1,8 +1,7 @@
 package com.pluralsight;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,9 +17,9 @@ public class AccountingLedger {
 
     public static void main(String[] args) {
 
-        System.out.println("************************************************");
-        System.out.println("Welcome To Your Personalized Accounting Ledger! ");
-        System.out.println("************************************************");
+        System.out.println("|************************************************|");
+        System.out.println("|Welcome To Your Personalized Accounting Ledger! |");
+        System.out.println("|************************************************|");
 
         boolean running = true;
         while (running) {
@@ -63,7 +62,7 @@ public class AccountingLedger {
             double amount = Double.parseDouble(scanner.nextLine());
 
             if (!isDeposit) {
-                amount = -Math.abs(amount); // ensure negative for payments
+                amount = -Math.abs(amount);
             }
 
         } catch (Exception e) {
@@ -87,9 +86,32 @@ public class AccountingLedger {
             System.out.println("H) Home");
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine().trim().toUpperCase();
+
+            ArrayList<Transaction> transactions = new ArrayList<>();
+
+            switch (choice) {
+                case "A":
+                    new displayTransactions(transactions);
+                    break;
+                case "D":
+                    int getTransactions = 0;
+                    new displayTransactions(transactions.stream().filter(t -> (getTransactions) > 0).toList());
+                    break;
+                case "P":
+                    getTransactions = 0;
+                    new displayTransactions(transactions.stream().filter(t -> (getTransactions) < 0).toList());
+                    break;
+                case "R":
+                    reportMenu(transactions);
+                    break;
+                case "H":
+                    backToHome = true;
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+            }
         }
-    }
-    // ============ Reports Menu ============
+    }  // ============ Reports Menu ============
     private static <Transaction> void reportMenu(List<Transaction> transactions) {
         boolean back = false;
         while (!back) {
@@ -101,15 +123,25 @@ public class AccountingLedger {
             System.out.println("5) Search by Vendor");
             System.out.println("0) Back");
             System.out.print("Choose an option: ");
-            String choice = scanner.nextLine().trim();
+            String choice = AccountingLedger.scanner.nextLine().trim();
+
+
 
         }
-    }
-    BufferedWriter writer = new BufferedWriter
-            (new FileWriter("C:\\Users\\Student\\pluralsight\\capstone-1\\untitled\\src\\main\\resources"));
+    } BufferedReader reader = new BufferedReader
+            (new FileReader("C:\\Users\\Student\\pluralsight\\capstone-1\\untitled\\src\\main\\resources"));
+}
 
 
 
 
 
-    }
+
+
+
+
+
+
+
+
+
